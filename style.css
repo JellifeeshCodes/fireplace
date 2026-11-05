@@ -1,0 +1,217 @@
+.fire-container{
+    position:relative;
+    width:400px;
+    height:500px;
+    margin:auto;
+}
+
+.fire-glow{
+    position:absolute;
+    bottom:100px;
+    left:50%;
+    width:380px;
+    height:380px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:
+        radial-gradient(circle,
+        rgba(255,210,120,.35) 0%,
+        rgba(255,120,0,.2) 35%,
+        rgba(255,70,0,.08) 55%,
+        transparent 75%);
+    animation:glowPulse 4s ease-in-out infinite;
+}
+
+.flames{
+    position:absolute;
+    bottom:95px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.flame{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform-origin:center bottom;
+    border-radius:50% 50% 25% 25%;
+    filter:blur(1px);
+}
+
+.outer{
+    width:160px;
+    height:260px;
+    margin-left:-80px;
+    background:
+      linear-gradient(
+      to top,
+      #ff2a00 0%,
+      #ff6a00 30%,
+      #ffb300 70%,
+      rgba(255,255,255,0) 100%);
+    animation:flickerOuter 2.2s infinite ease-in-out;
+}
+
+.middle{
+    width:120px;
+    height:220px;
+    margin-left:-60px;
+    background:
+      linear-gradient(
+      to top,
+      #ff7200,
+      #ffc642,
+      rgba(255,255,255,0));
+    animation:flickerMid 1.5s infinite ease-in-out;
+}
+
+.inner{
+    width:70px;
+    height:150px;
+    margin-left:-35px;
+    background:
+      linear-gradient(
+      to top,
+      #fff7ce,
+      #ffffff,
+      rgba(255,255,255,0));
+    animation:flickerInner 1s infinite ease-in-out;
+    filter:blur(.5px);
+}
+
+.logs{
+    position:absolute;
+    bottom:70px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.log{
+    position:absolute;
+    width:170px;
+    height:24px;
+    border-radius:20px;
+    background:
+      linear-gradient(
+      180deg,
+      #7b5232,
+      #4d2f1a);
+    box-shadow:
+      0 0 20px rgba(0,0,0,.5);
+}
+
+.left{
+    transform:rotate(28deg);
+}
+
+.right{
+    transform:rotate(-28deg);
+}
+
+.embers span{
+    position:absolute;
+    bottom:130px;
+    left:50%;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#ffb347;
+    box-shadow:0 0 12px #ff8200;
+    animation:emberRise linear infinite;
+}
+
+.embers span:nth-child(1){left:45%;animation-duration:4s;}
+.embers span:nth-child(2){left:48%;animation-duration:3s;}
+.embers span:nth-child(3){left:52%;animation-duration:5s;}
+.embers span:nth-child(4){left:55%;animation-duration:4.5s;}
+.embers span:nth-child(5){left:43%;animation-duration:6s;}
+.embers span:nth-child(6){left:57%;animation-duration:5.5s;}
+.embers span:nth-child(7){left:49%;animation-duration:3.8s;}
+.embers span:nth-child(8){left:54%;animation-duration:4.2s;}
+
+.smoke span{
+    position:absolute;
+    bottom:230px;
+    left:50%;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:rgba(180,180,180,.08);
+    filter:blur(10px);
+    animation:smokeRise 8s linear infinite;
+}
+
+.smoke span:nth-child(2){
+    animation-delay:2s;
+}
+
+.smoke span:nth-child(3){
+    animation-delay:4s;
+}
+
+@keyframes flickerOuter{
+    0%,100%{
+        transform:translateX(-50%) scale(1) rotate(-2deg);
+    }
+    20%{
+        transform:translateX(-48%) scale(1.08) rotate(2deg);
+    }
+    50%{
+        transform:translateX(-53%) scale(.95);
+    }
+    80%{
+        transform:translateX(-49%) scale(1.05);
+    }
+}
+
+@keyframes flickerMid{
+    0%,100%{
+        transform:translateX(-50%) scale(1);
+    }
+    50%{
+        transform:translateX(-47%) scale(1.15);
+    }
+}
+
+@keyframes flickerInner{
+    0%,100%{
+        transform:translateX(-50%) scale(1);
+    }
+    50%{
+        transform:translateX(-52%) scale(.85);
+    }
+}
+
+@keyframes emberRise{
+    from{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-260px)
+                  translateX(calc((50 - 100 * random) * 1px));
+        opacity:0;
+        scale:.2;
+    }
+}
+
+@keyframes smokeRise{
+    from{
+        opacity:.2;
+        transform:translate(-50%,0) scale(.5);
+    }
+
+    to{
+        opacity:0;
+        transform:translate(-20%, -220px) scale(2.5);
+    }
+}
+
+@keyframes glowPulse{
+    0%,100%{
+        transform:translateX(-50%) scale(1);
+    }
+    50%{
+        transform:translateX(-50%) scale(1.08);
+    }
+}
