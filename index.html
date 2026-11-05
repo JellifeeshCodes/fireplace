@@ -85,14 +85,24 @@ body {
 const audio = document.getElementById("audio");
 const overlay = document.getElementById("overlay");
 
-document.addEventListener("click", async () => {
+async function startFireplace() {
     try {
+        audio.volume = 0.7;
+
         await audio.play();
+
         overlay.classList.add("hidden");
+
+        document.removeEventListener("touchstart", startFireplace);
+        document.removeEventListener("click", startFireplace);
+
     } catch (err) {
-        console.log(err);
+        console.log("Audio start failed:", err);
     }
-}, { once: true });
+}
+
+document.addEventListener("touchstart", startFireplace, { once: true });
+document.addEventListener("click", startFireplace, { once: true });
 </script>
 
 </body>
